@@ -9,9 +9,9 @@ bool IsKPeriodic(string row)
     cin >> k;
     for (int i = 0; i < row.length() - k; i++)
     {
-        if (row[i] != row[i + k])
+        if (row[i] != row[i + k] || row[0] != row[row.length()-k])
         {
-            cout << "Строка не кратна введеному числу" << endl;
+            cout << "Строка не кратна K" << endl;
             return false;
         }        
     }
@@ -22,7 +22,7 @@ bool IsKPeriodic(string row)
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    string row = "abcdeabcdeabcdeabcde";
+    string row = "rideriderideriderideriderideride";
     IsKPeriodic(row);
     return 0;
 }
