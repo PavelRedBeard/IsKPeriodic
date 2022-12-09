@@ -23,6 +23,11 @@ int main()
     fstream file;
     string row;
     file.open("row.txt");
+    if (!file.is_open())
+    {
+        cout << "Ошибка открытия файла" << endl;
+        return 0;
+    }
     getline(file, row);
     int k;
     cout << "Введите К: ";
