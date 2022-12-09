@@ -1,13 +1,11 @@
 #include<iostream>
 #include<string>
+#include<fstream>
 using namespace std;
 
-bool IsKPeriodic(string row)
-{
-    int k;
-    cout << "Введите К: ";
-    cin >> k;
-    for (int i = 0; i < row.length() - k; i++)
+bool IsKPeriodic(string& row, int& k)
+{    
+    for (size_t i = 0; i < row.length() - k; i++)
     {
         if (row[i] != row[i + k] || row[0] != row[row.length()-k])
         {
@@ -22,7 +20,18 @@ bool IsKPeriodic(string row)
 int main()
 {
     setlocale(LC_ALL, "Russian");
-    string row = "rideriderideriderideriderideride";
-    IsKPeriodic(row);
+    fstream file;
+    string row;
+    file.open("row.txt");
+    getline(file, row);
+    int k;
+    cout << "Введите К: ";
+    cin >> k;
+    if (k == 0 || k > row.length())
+    {
+        cout << "Недопустимое значение К" << endl;
+        return 0;
+    }
+    IsKPeriodic(row, k);
     return 0;
 }
